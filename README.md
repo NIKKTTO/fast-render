@@ -1,6 +1,8 @@
-# Fast Render [![Build Status](https://travis-ci.org/kadirahq/fast-render.svg?branch=master)](https://travis-ci.org/meteorhacks/fast-render)
+# Fast Render
 
 Fast Render can improve the initial load time of your app, giving you 2-10 times faster initial page loads. It provides the same effect as Server Side Rendering (SSR), but still sends data over the wire to avoid breaking one of Meteor’s core principles.
+
+#### This is a continuation of `meteorhacks:fast-render` by @arunoda
 
 **Table of Contents**
 
@@ -20,11 +22,11 @@ Let's look at a demo. Here is the leaderboard example from [BulletProof Meteor](
 
 ![a Meteor app Without Fast Render](https://cldup.com/v4PmJqPtlY.png)
 
-Here you see the loading screen while we wait on data to render the acutual leaderboard.
+Here you see the loading screen while we wait on data to render the actual leaderboard.
 
 ---
 
-Now let's see how the leaderboard loads when using use Fast Render: [click here](https://bulletproofmeteor.com/leaderboard).
+Now let's see how the leaderboard loads when using Fast Render: [click here](https://bulletproofmeteor.com/leaderboard).
 
 You never see the loading screen becuase we don't have to wait on data. Right after the page is loaded, the leaderboard is there. To do this, all we've done is add Fast Render to the app and insert a single line of configuration.
 
@@ -38,7 +40,7 @@ Check this demo [video](https://www.youtube.com/watch?v=mGcE6UVOqPk) if you need
 Add Fast Render to your Meteor app:
 
 ~~~shell
-meteor add meteorhacks:fast-render
+meteor add staringatlights:fast-render
 ~~~
 
 After that, make sure you've moved your route related code (`router.js` file or relavant files) to a place which can be access by both server and client. (i.e. the `lib` folder).
@@ -207,6 +209,12 @@ If you are getting this issue, it seems like you are doing a database write oper
 To get around with this issue, rather than invoking a DB operation with MiniMongo, try to invoke a method call.
 
 Related Issue & Discussion: <https://github.com/meteorhacks/fast-render/issues/80>
+
+### No data is injected when using "AppCache" package
+
+Currently FastRender does not support simultaneous usage with [appcache package](https://atmospherejs.com/meteor/appcache)
+
+Related Issue & Discussion: <https://github.com/kadirahq/fast-render/issues/136>
 
 ## Debugging
 
